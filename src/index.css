@@ -1,13 +1,203 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Variables */
+@font-face {
+  font-family: BrandingAliskaje;
+  src: url(./fonts/BrandingAliskaje.otf);
+}
+
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --bg: rgba(19, 19, 19, 1);
+  --licorice: rgba(20, 20, 20, 1);
+  --chicago: rgba(94, 94, 94, 1);
+  --alto: rgba(217, 217, 217, 0.38);
+  --alto-2: rgba(217, 217, 217, 1);
+  --concrete: rgba(242, 242, 242, 1);
+  --white: rgba(255, 255, 255, 1);
+
+  --font-size-m: 4.2px;
+  --font-size-l: 4.7px;
+  --font-size-xxl: 20px;
+  --font-size-xxxl: 13.5px;
+  --font-size-xxxl: 32px;
+  --font-size-xxxxl: 19.4px;
+  --font-size-xxxxl: 45.8px;
+  --font-size-xxxxxl: 27.1px;
+  --font-size-xxxxxl: 91.6px;
+  --font-size-xl2: 6.8px;
+  --font-size-xxl2: 9.7px;
+
+  --font-family-abel: "Abel";
+  --font-family-abel-regular: "Abel-Regular";
+  --font-family-alata: "Alata";
+  --font-family-branding_aliskaje-regular: "Branding Aliskaje-Regular";
+}
+
+/* Classes */
+
+.alata-normal-white-19-4px {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: 19.391307830810547px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-27-1px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 27.089946746826172px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-4-7px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 4.740740776062012px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-27-1px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxxxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-4-2px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-9-7px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxl2);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-40px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 40px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-20px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.alata-normal-white-91-6px {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-xxxxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-4-7px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-22-4px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 22.399999618530273px;
+  font-weight: 400;
+  font-style: normal;
+}
+.alata-normal-white-19-4px {
+  color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-4-2px-2 {
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-45-8px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-concrete-5-1px {
+  color: var(--concrete);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 5.079364776611328px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-13-5px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 13.544973373413086px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-6-8px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xl2);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-128px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 128px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-13-5px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-32px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-xxxl);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-concrete-24px {
+  color: var(--concrete);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-alto-4-2px {
+  color: var(--alto-2);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+.brandingaliskaje-regular-normal-white-8-5px {
+  color: var(--white);
+  font-family: var(--font-family-branding_aliskaje-regular);
+  font-size: 8.465608596801758px;
+  font-weight: 400;
+  font-style: normal;
 }

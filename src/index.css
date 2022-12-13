@@ -3,6 +3,7 @@ body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
 }
 
 /* Variables */
@@ -20,6 +21,8 @@ body {
   --alto-2: rgba(217, 217, 217, 1);
   --concrete: rgba(242, 242, 242, 1);
   --white: rgba(255, 255, 255, 1);
+
+  --linkSizeDispktop: 1.5vw;
 
   --font-size-m: 4.2px;
   --font-size-l: 4.7px;

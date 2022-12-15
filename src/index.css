@@ -23,6 +23,7 @@ body {
   --white: rgba(255, 255, 255, 1);
 
   --linkSizeDispktop: 1.5vw;
+  --linkSizemobile: 3vw;
 
   --font-size-m: 4.2px;
   --font-size-l: 4.7px;

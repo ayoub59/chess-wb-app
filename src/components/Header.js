@@ -41,6 +41,9 @@ const LogoContainer = styled.div`
 
 const Logo = styled.img`
   /* height: 27px; */
+  @media (max-width: 768px) {
+    height: 7vw;
+  }
 `;
 
 const Links = styled.div`
@@ -58,12 +61,14 @@ const Title = styled.a`
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-
   color: var(--concrete);
   font-family: "BrandingAliskaje";
   font-weight: 400;
   font-style: normal;
   font-size: var(--linkSizeDispktop);
+  @media (max-width: 768px) {
+    font-size: var(--linkSizemobile);
+  }
 `;
 
 const BtnConatiner = styled.div`
@@ -82,10 +87,13 @@ const LogBtn = styled.button`
   font-family: "BrandingAliskaje";
   font-weight: 400;
   font-size: var(--linkSizeDispktop);
+  @media (max-width: 768px) {
+    font-size: var(--linkSizemobile);
+  }
 `;
 const SignBtn = styled.button`
   cursor: pointer;
-  border: 1px white solid;
+  border: 2px white solid;
   border-radius: 50px;
   background: none;
   color: white;
@@ -94,4 +102,7 @@ const SignBtn = styled.button`
   font-weight: 400;
   font-size: var(--linkSizeDispktop);
   padding: 11.2px 22.4px;
+  @media (max-width: 768px) {
+    font-size: var(--linkSizemobile);
+  }
 `;

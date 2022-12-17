@@ -21,9 +21,10 @@ body {
   --alto-2: rgba(217, 217, 217, 1);
   --concrete: rgba(242, 242, 242, 1);
   --white: rgba(255, 255, 255, 1);
-
+  /* mine */
   --linkSizeDispktop: 1.5vw;
   --linkSizemobile: 3vw;
+  --headingSizeDisktop: 8vw;
 
   --font-size-m: 4.2px;
   --font-size-l: 4.7px;
@@ -44,7 +45,9 @@ body {
 }
 
 /* Classes */
-
+.center {
+  text-align: center;
+}
 .alata-normal-white-19-4px {
   color: var(--white);
   font-family: var(--font-family-alata);

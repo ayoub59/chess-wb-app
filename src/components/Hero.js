@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from "styled-components";
 import image from "../images/hero-image.png";
-import arrow from "../images/arrow.svg"
+import arrow from "../images/arrow.svg";
 
 function Hero() {
     return (
@@ -48,11 +48,9 @@ height:700px ;
 display: flex;
 width: 80%;
 @media (max-width: 768px) {
-    /* make it responive */
   }
 `
 const TextConatiner = styled.div`
-/* background-color: #2b2b2b; */
 width:50% ;
 display: flex;
     flex-direction: column;
@@ -105,7 +103,6 @@ width: fit-content;
   }
 `
 const ImageConatner = styled.div`
-/* background-color: #121239; */
 width:50% ;
 
 `

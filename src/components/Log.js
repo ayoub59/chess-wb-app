@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 
 
 function Log() {
+    // var rating = document.getElementById("rating");
+    // var RatingValue = rating.value;
     // paralax code, maybe??
     // useEffect(() => {
     //     var image = document.querySelectorAll(".arrow-2-AB8MDr");
@@ -40,9 +42,15 @@ function Log() {
                         <InputField />
 
                     </InputConatiner>
-                    {/* Range of elo */}
+                    <InputName>
+                        Rating (Elo)
+                    </InputName>
+                    <EloRange type="range" id="rating" name="rating" min="150" max="3000" />
+                    {/* output of the input */}
+                    <RangeOutput>
+                        value
+                    </RangeOutput>
                     {/* agremmen to sharing the enfo */}
-                    {/* send button */}
                     <Btn>
                         play
                         <Aroow src={arrow} />
@@ -96,12 +104,14 @@ const InputField = styled.input`
 background: rgba(217, 217, 217, 0.38);
 border: 2.65595px solid #FFFFFF;
 border-radius: 66.3987px;
-height: 20px;
+height: 30px;
+width: 60%;
 `
 const InputConatiner = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
+width: 100%;
 `
 const Title = styled.div`
   color: var(--concrete);
@@ -143,4 +153,14 @@ width: fit-content;
 const Aroow = styled.img`
 width: 30px;
 object-fit: fill;
+`
+const EloRange = styled.input`
+width: 80% !important;
+
+`
+const RangeOutput = styled.h3`
+  color: var(--concrete);
+  font-family: "BrandingAliskaje";
+  font-size: var(--SubheadingSizeDisktop);
+  font-weight: 400;
 `

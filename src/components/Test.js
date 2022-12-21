@@ -1,321 +1,437 @@
-import styled, { css } from "styled-components";
-import React, { useEffect } from "react";
+// for the input range thumb
+const END = "change";
+const START = "ontouchstart" in document ? "touchstart" : "mousedown";
+const INPUT = "input";
+const MAX_ROTATION = 35;
+const SOFTEN_FACTOR = 3;
 
-export const BrandingaliskajeRegularNormalWhite3 = css`
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxl);
-  font-weight: 400;
-  font-style: normal;
-`;
+class RangeInput {
+  constructor(el) {
+    this.el = el;
 
-export const BrandingaliskajeRegularNormalWhite4 = css`
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  font-style: normal;
-`;
+    this._handleEnd = this._handleEnd.bind(this);
+    this._handleStart = this._handleStart.bind(this);
+    this._handleInput = this._handleInput.bind(this);
 
-function App() {
-  useEffect(() => {
-    var image = document.querySelectorAll(".arrow-2-AB8MDr");
-    new window.simpleParallax(image, { orientation: "up", scale: 1.2, overflow: true, delay: 0.4, transition: "none" });
-    var image = document.querySelectorAll(".rectangle-4-AB8MDr");
-    new window.simpleParallax(image, {
-      orientation: "down",
-      scale: 1.2,
-      overflow: true,
-      delay: 0.4,
-      transition: "none",
+    //Call the plugin
+    $(this.el.querySelector("input[type=range]")).rangeslider({
+      polyfill: false, //Never use the native polyfill
+      rangeClass: "rangeslider",
+      disabledClass: "rangeslider-disabled",
+      horizontalClass: "rangeslider-horizontal",
+      verticalClass: "rangeslider-vertical",
+      fillClass: "rangeslider-fill-lower",
+      handleClass: "rangeslider-thumb",
+      onInit: function () {
+        //No args are passed, so we can't change context of this
+        const pluginInstance = this;
+
+        //Move the range-output inside the handle so we can do all the stuff in css
+        $(pluginInstance.$element)
+          .parents(".range")
+          .find(".range-output")
+          .appendTo(pluginInstance.$handle);
+      },
     });
-  }, []);
 
-  return (
-    <LogIn>
-      <OverlapGroup2>
-        <OverlapGroup1>
-          <img className="arrow-2-AB8MDr" src="arrow-2.png" alt="arrow 2" />
-          <Group7>
-            <Chcheck>
-              <IconCheckMark src="vector-2.svg" alt="icon-check_mark" />
-            </Chcheck>
-            <IAgreeOnSharingTheInfo>i agree on sharing the info</IAgreeOnSharingTheInfo>
-          </Group7>
-          <img className="rectangle-4-AB8MDr" src="rectangle-4.svg" alt="Rectangle 4" />
-        </OverlapGroup1>
-        <a href="javascript:SubmitForm('form1')">
-          <Btn>
-            <Place>send</Place>
-            <Vector src="vector-1.svg" alt="Vector" />
-          </Btn>
-        </a>
-        <Title>Log in</Title>
-        <Group4>Full Name</Group4>
-        <Group4 className="group-5">
-          Email
-        </Group4>
-        <Group6>
-          <RatingElo>rating (Elo)</RatingElo>
-          <Group3>
-            <OverlapGroup>
-              <Line3 src="line-3-1.svg" alt="Line 3" />
-              <Line4 src="line-4-5.svg" alt="Line 4" />
-              <Ellipse2></Ellipse2>
-              <Ellipse3></Ellipse3>
-            </OverlapGroup>
-            <NumberContainer>
-              <Number>0</Number>
-              <Number1>700</Number1>
-            </NumberContainer>
-          </Group3>
-        </Group6>
-      </OverlapGroup2>
-    </LogIn>
-  );
-}
+    this.sliderThumbEl = el.querySelector(".rangeslider-thumb");
+    this.outputEl = el.querySelector(".range-output");
+    this.inputEl = el.querySelector("input[type=range]");
+    this._lastOffsetLeft = 0;
+    this._lastTimeStamp = 0;
 
-export default App;
-const LogIn = styled.div`
-  display: flex;
-  align-items: flex-start;
-  min-width: 1237px;
-`;
-
-const OverlapGroup2 = styled.div`
-  width: 1235px;
-  height: 1088px;
-  position: relative;
-`;
-
-const OverlapGroup1 = styled.div`
-  position: absolute;
-  width: 1228px;
-  height: 1088px;
-  top: 0;
-  left: 7px;
-`;
-
-const Group7 = styled.div`
-  position: absolute;
-  height: 48px;
-  top: 764px;
-  left: 0;
-  display: flex;
-  align-items: center;
-  min-width: 488px;
-  gap: 31px;
-`;
-
-const Chcheck = styled.div`
-  height: 35px;
-  margin-top: 0.4px;
-  display: flex;
-  padding: 4.9px 5.6px;
-  align-items: flex-start;
-  min-width: 35px;
-  background-color: var(--alto);
-  border-radius: 35px;
-  border: 1.3999727964401245px solid;
-  border-color: var(--white);
-`;
-
-const IconCheckMark = styled.img`
-  width: 21px;
-  height: 23px;
-`;
-
-const IAgreeOnSharingTheInfo = styled.p`
-  ${BrandingaliskajeRegularNormalWhite3}
-  min-width: 420px;
-  letter-spacing: 0;
-  line-height: 48px;
-  white-space: nowrap;
-`;
-
-const Btn = styled.div`
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 40px;
-  position: absolute;
-  top: 879px;
-  left: 0;
-  border-radius: 100px;
-  border: 3px solid;
-  border-color: var(--white);
-  cursor: pointer;
-`;
-
-const Place = styled.div`
-  ${BrandingaliskajeRegularNormalWhite4}
-  width: fit-content;
-  margin-top: -3px;
-  letter-spacing: 0;
-  line-height: 60px;
-  white-space: nowrap;
-`;
-
-const Vector = styled.img`
-  min-width: 46.666748046875px;
-  height: 46.6666259765625px;
-`;
-
-const Title = styled.h1`
-  position: absolute;
-  top: 0;
-  left: 7px;
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-weight: 400;
-  color: var(--white);
-  font-size: var(--font-size-xl);
-  letter-spacing: 0;
-  line-height: 96px;
-  white-space: nowrap;
-`;
-
-const Group6 = styled.div`
-  position: absolute;
-  width: 441px;
-  top: 527px;
-  left: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 186px;
-  gap: 20px;
-`;
-
-const RatingElo = styled.div`
-  ${BrandingaliskajeRegularNormalWhite3}
-  margin-left: 4px;
-  letter-spacing: 0;
-  line-height: 48px;
-  white-space: nowrap;
-`;
-
-const Group3 = styled.div`
-  width: 443px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 118px;
-  gap: 20px;
-`;
-
-const OverlapGroup = styled.div`
-  width: 439px;
-  height: 50px;
-  position: relative;
-`;
-
-const Line3 = styled.img`
-  position: absolute;
-  width: 411px;
-  height: 4px;
-  top: 21px;
-  left: 28px;
-`;
-
-const Line4 = styled.img`
-  position: absolute;
-  width: 284px;
-  height: 4px;
-  top: 21px;
-  left: 155px;
-`;
-
-const Ellipse2 = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 0;
-  left: 0;
-  background-color: var(--licorice);
-  border-radius: 25px;
-  border: 2px solid;
-  border-color: var(--chicago);
-`;
-
-const Ellipse3 = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 0;
-  left: 130px;
-  background-color: var(--licorice);
-  border-radius: 25px;
-  border: 2px solid;
-  border-color: var(--chicago);
-`;
-
-const NumberContainer = styled.div`
-  ${BrandingaliskajeRegularNormalWhite3}
-  height: 48px;
-  margin-left: 14px;
-  display: flex;
-  align-items: flex-start;
-  min-width: 171px;
-  gap: 88px;
-`;
-
-const Number = styled.div`
-  min-width: 23px;
-  letter-spacing: 0;
-  line-height: 48px;
-  white-space: nowrap;
-`;
-
-const Number1 = styled.div`
-  letter-spacing: 0;
-  line-height: 48px;
-  white-space: nowrap;
-`;
-
-function Group4(props) {
-  const { children, className } = props;
-
-  return (
-    <Group41 className={`group-4 ${className || ""}`}>
-      <FullName className="full-name">
-        {children}
-      </FullName>
-      <Rectangle3 className="rectangle-3"></Rectangle3>
-    </Group41>
-  );
-}
-
-const Group41 = styled.div`
-  position: absolute;
-  width: 415px;
-  top: 197px;
-  left: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 134px;
-  gap: 20px;
-
-  &.group-4.group-5 {
-    top: 351px;
-    left: 7px;
+    this.el
+      .querySelector(".rangeslider")
+      .addEventListener(START, this._handleStart);
   }
-`;
 
-const FullName = styled.div`
-  ${BrandingaliskajeRegularNormalWhite3}
-  letter-spacing: 0;
-  line-height: 48px;
-  white-space: nowrap;
-`;
+  _handleStart(e) {
+    this._lastTimeStamp = new Date().getTime();
+    this._lastOffsetLeft = this.sliderThumbEl.offsetLeft;
 
-const Rectangle3 = styled.div`
-  width: 413px;
-  height: 66px;
-  background-color: var(--alto);
-  border-radius: 66.4px;
-  border: 2.6559486389160156px solid;
-  border-color: var(--white);
-`;
+    //Wrap in raf because offsetLeft is updated by the plugin after this fires
+    requestAnimationFrame((_) => {
+      //Bind through jquery because plugin doesn't fire native event
+      $(this.inputEl).on(INPUT, this._handleInput);
+      $(this.inputEl).on(END, this._handleEnd);
+    });
+  }
+
+  _handleEnd(e) {
+    //Unbind through jquery because plugin doesn't fire native event
+    $(this.inputEl).off(INPUT, this._handleInput);
+    $(this.inputEl).off(END, this._handleEnd);
+
+    requestAnimationFrame(
+      (_) => (this.outputEl.style.transform = "rotate(0deg)")
+    );
+  }
+
+  _handleInput(e) {
+    let now = new Date().getTime();
+    let timeElapsed = now - this._lastTimeStamp || 1;
+    let distance = this.sliderThumbEl.offsetLeft - this._lastOffsetLeft;
+    let direction = distance < 0 ? -1 : 1;
+    let velocity = Math.abs(distance) / timeElapsed; //pixels / millisecond
+    let targetRotation = Math.min(
+      Math.abs(distance * velocity) * SOFTEN_FACTOR,
+      MAX_ROTATION
+    );
+
+    requestAnimationFrame(
+      (_) =>
+        (this.outputEl.style.transform =
+          "rotate(" + targetRotation * -direction + "deg)")
+    );
+
+    this._lastTimeStamp = now;
+    this._lastOffsetLeft = this.sliderThumbEl.offsetLeft;
+  }
+}
+
+/*! rangeslider.js - v2.1.1 | (c) 2016 @andreruffert | MIT license | https://github.com/andreruffert/rangeslider.js */
+!(function (a) {
+  "use strict";
+  "function" == typeof define && define.amd
+    ? define(["jquery"], a)
+    : "object" == typeof exports
+    ? (module.exports = a(require("jquery")))
+    : a(jQuery);
+})(function (a) {
+  "use strict";
+  function b() {
+    var a = document.createElement("input");
+    return a.setAttribute("type", "range"), "text" !== a.type;
+  }
+  function c(a, b) {
+    var c = Array.prototype.slice.call(arguments, 2);
+    return setTimeout(function () {
+      return a.apply(null, c);
+    }, b);
+  }
+  function d(a, b) {
+    return (
+      (b = b || 100),
+      function () {
+        if (!a.debouncing) {
+          var c = Array.prototype.slice.apply(arguments);
+          (a.lastReturnVal = a.apply(window, c)), (a.debouncing = !0);
+        }
+        return (
+          clearTimeout(a.debounceTimeout),
+          (a.debounceTimeout = setTimeout(function () {
+            a.debouncing = !1;
+          }, b)),
+          a.lastReturnVal
+        );
+      }
+    );
+  }
+  function e(a) {
+    return a && (0 === a.offsetWidth || 0 === a.offsetHeight || a.open === !1);
+  }
+  function f(a) {
+    for (var b = [], c = a.parentNode; e(c); ) b.push(c), (c = c.parentNode);
+    return b;
+  }
+  function g(a, b) {
+    function c(a) {
+      "undefined" != typeof a.open && (a.open = a.open ? !1 : !0);
+    }
+    var d = f(a),
+      e = d.length,
+      g = [],
+      h = a[b];
+    if (e) {
+      for (var i = 0; e > i; i++)
+        (g[i] = d[i].style.cssText),
+          d[i].style.setProperty
+            ? d[i].style.setProperty("display", "block", "important")
+            : (d[i].style.cssText += ";display: block !important"),
+          (d[i].style.height = "0"),
+          (d[i].style.overflow = "hidden"),
+          (d[i].style.visibility = "hidden"),
+          c(d[i]);
+      h = a[b];
+      for (var j = 0; e > j; j++) (d[j].style.cssText = g[j]), c(d[j]);
+    }
+    return h;
+  }
+  function h(a, b) {
+    var c = parseFloat(a);
+    return Number.isNaN(c) ? b : c;
+  }
+  function i(a) {
+    return a.charAt(0).toUpperCase() + a.substr(1);
+  }
+  function j(b, e) {
+    if (
+      ((this.$window = a(window)),
+      (this.$document = a(document)),
+      (this.$element = a(b)),
+      (this.options = a.extend({}, n, e)),
+      (this.polyfill = this.options.polyfill),
+      (this.orientation =
+        this.$element[0].getAttribute("data-orientation") ||
+        this.options.orientation),
+      (this.onInit = this.options.onInit),
+      (this.onSlide = this.options.onSlide),
+      (this.onSlideEnd = this.options.onSlideEnd),
+      (this.DIMENSION = o.orientation[this.orientation].dimension),
+      (this.DIRECTION = o.orientation[this.orientation].direction),
+      (this.DIRECTION_STYLE = o.orientation[this.orientation].directionStyle),
+      (this.COORDINATE = o.orientation[this.orientation].coordinate),
+      this.polyfill && m)
+    )
+      return !1;
+    (this.identifier = "js-" + k + "-" + l++),
+      (this.startEvent =
+        this.options.startEvent.join("." + this.identifier + " ") +
+        "." +
+        this.identifier),
+      (this.moveEvent =
+        this.options.moveEvent.join("." + this.identifier + " ") +
+        "." +
+        this.identifier),
+      (this.endEvent =
+        this.options.endEvent.join("." + this.identifier + " ") +
+        "." +
+        this.identifier),
+      (this.toFixed = (this.step + "").replace(".", "").length - 1),
+      (this.$fill = a('<div class="' + this.options.fillClass + '" />')),
+      (this.$handle = a('<div class="' + this.options.handleClass + '" />')),
+      (this.$range = a(
+        '<div class="' +
+          this.options.rangeClass +
+          " " +
+          this.options[this.orientation + "Class"] +
+          '" id="' +
+          this.identifier +
+          '" />'
+      )
+        .insertAfter(this.$element)
+        .prepend(this.$fill, this.$handle)),
+      this.$element.css({
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        overflow: "hidden",
+        opacity: "0",
+      }),
+      (this.handleDown = a.proxy(this.handleDown, this)),
+      (this.handleMove = a.proxy(this.handleMove, this)),
+      (this.handleEnd = a.proxy(this.handleEnd, this)),
+      this.init();
+    var f = this;
+    this.$window.on(
+      "resize." + this.identifier,
+      d(function () {
+        c(function () {
+          f.update(!1, !1);
+        }, 300);
+      }, 20)
+    ),
+      this.$document.on(
+        this.startEvent,
+        "#" + this.identifier + ":not(." + this.options.disabledClass + ")",
+        this.handleDown
+      ),
+      this.$element.on("change." + this.identifier, function (a, b) {
+        if (!b || b.origin !== f.identifier) {
+          var c = a.target.value,
+            d = f.getPositionFromValue(c);
+          f.setPosition(d);
+        }
+      });
+  }
+  Number.isNaN =
+    Number.isNaN ||
+    function (a) {
+      return "number" == typeof a && a !== a;
+    };
+  var k = "rangeslider",
+    l = 0,
+    m = b(),
+    n = {
+      polyfill: !0,
+      orientation: "horizontal",
+      rangeClass: "rangeslider",
+      disabledClass: "rangeslider--disabled",
+      horizontalClass: "rangeslider--horizontal",
+      verticalClass: "rangeslider--vertical",
+      fillClass: "rangeslider__fill",
+      handleClass: "rangeslider__handle",
+      startEvent: ["mousedown", "touchstart", "pointerdown"],
+      moveEvent: ["mousemove", "touchmove", "pointermove"],
+      endEvent: ["mouseup", "touchend", "pointerup"],
+    },
+    o = {
+      orientation: {
+        horizontal: {
+          dimension: "width",
+          direction: "left",
+          directionStyle: "left",
+          coordinate: "x",
+        },
+        vertical: {
+          dimension: "height",
+          direction: "top",
+          directionStyle: "bottom",
+          coordinate: "y",
+        },
+      },
+    };
+  return (
+    (j.prototype.init = function () {
+      this.update(!0, !1),
+        this.onInit && "function" == typeof this.onInit && this.onInit();
+    }),
+    (j.prototype.update = function (a, b) {
+      (a = a || !1),
+        a &&
+          ((this.min = h(this.$element[0].getAttribute("min"), 0)),
+          (this.max = h(this.$element[0].getAttribute("max"), 100)),
+          (this.value = h(
+            this.$element[0].value,
+            Math.round(this.min + (this.max - this.min) / 2)
+          )),
+          (this.step = h(this.$element[0].getAttribute("step"), 1))),
+        (this.handleDimension = g(
+          this.$handle[0],
+          "offset" + i(this.DIMENSION)
+        )),
+        (this.rangeDimension = g(this.$range[0], "offset" + i(this.DIMENSION))),
+        (this.maxHandlePos = this.rangeDimension - this.handleDimension),
+        (this.grabPos = this.handleDimension / 2),
+        (this.position = this.getPositionFromValue(this.value)),
+        this.$element[0].disabled
+          ? this.$range.addClass(this.options.disabledClass)
+          : this.$range.removeClass(this.options.disabledClass),
+        this.setPosition(this.position, b);
+    }),
+    (j.prototype.handleDown = function (a) {
+      if (
+        (this.$document.on(this.moveEvent, this.handleMove),
+        this.$document.on(this.endEvent, this.handleEnd),
+        !(
+          (" " + a.target.className + " ")
+            .replace(/[\n\t]/g, " ")
+            .indexOf(this.options.handleClass) > -1
+        ))
+      ) {
+        var b = this.getRelativePosition(a),
+          c = this.$range[0].getBoundingClientRect()[this.DIRECTION],
+          d = this.getPositionFromNode(this.$handle[0]) - c,
+          e =
+            "vertical" === this.orientation
+              ? this.maxHandlePos - (b - this.grabPos)
+              : b - this.grabPos;
+        this.setPosition(e),
+          b >= d && b < d + this.handleDimension && (this.grabPos = b - d);
+      }
+    }),
+    (j.prototype.handleMove = function (a) {
+      a.preventDefault();
+      var b = this.getRelativePosition(a),
+        c =
+          "vertical" === this.orientation
+            ? this.maxHandlePos - (b - this.grabPos)
+            : b - this.grabPos;
+      this.setPosition(c);
+    }),
+    (j.prototype.handleEnd = function (a) {
+      a.preventDefault(),
+        this.$document.off(this.moveEvent, this.handleMove),
+        this.$document.off(this.endEvent, this.handleEnd),
+        this.$element.trigger("change", { origin: this.identifier }),
+        this.onSlideEnd &&
+          "function" == typeof this.onSlideEnd &&
+          this.onSlideEnd(this.position, this.value);
+    }),
+    (j.prototype.cap = function (a, b, c) {
+      return b > a ? b : a > c ? c : a;
+    }),
+    (j.prototype.setPosition = function (a, b) {
+      var c, d;
+      void 0 === b && (b = !0),
+        (c = this.getValueFromPosition(this.cap(a, 0, this.maxHandlePos))),
+        (d = this.getPositionFromValue(c)),
+        (this.$fill[0].style[this.DIMENSION] = d + this.grabPos + "px"),
+        (this.$handle[0].style[this.DIRECTION_STYLE] = d + "px"),
+        this.setValue(c),
+        (this.position = d),
+        (this.value = c),
+        b &&
+          this.onSlide &&
+          "function" == typeof this.onSlide &&
+          this.onSlide(d, c);
+    }),
+    (j.prototype.getPositionFromNode = function (a) {
+      for (var b = 0; null !== a; ) (b += a.offsetLeft), (a = a.offsetParent);
+      return b;
+    }),
+    (j.prototype.getRelativePosition = function (a) {
+      var b = i(this.COORDINATE),
+        c = this.$range[0].getBoundingClientRect()[this.DIRECTION],
+        d = 0;
+      return (
+        "undefined" != typeof a["page" + b]
+          ? (d = a["client" + b])
+          : "undefined" != typeof a.originalEvent["client" + b]
+          ? (d = a.originalEvent["client" + b])
+          : a.originalEvent.touches &&
+            a.originalEvent.touches[0] &&
+            "undefined" != typeof a.originalEvent.touches[0]["client" + b]
+          ? (d = a.originalEvent.touches[0]["client" + b])
+          : a.currentPoint &&
+            "undefined" != typeof a.currentPoint[this.COORDINATE] &&
+            (d = a.currentPoint[this.COORDINATE]),
+        d - c
+      );
+    }),
+    (j.prototype.getPositionFromValue = function (a) {
+      var b, c;
+      return (
+        (b = (a - this.min) / (this.max - this.min)),
+        (c = Number.isNaN(b) ? 0 : b * this.maxHandlePos)
+      );
+    }),
+    (j.prototype.getValueFromPosition = function (a) {
+      var b, c;
+      return (
+        (b = a / (this.maxHandlePos || 1)),
+        (c =
+          this.step * Math.round((b * (this.max - this.min)) / this.step) +
+          this.min),
+        Number(c.toFixed(this.toFixed))
+      );
+    }),
+    (j.prototype.setValue = function (a) {
+      (a !== this.value || "" === this.$element[0].value) &&
+        this.$element.val(a).trigger("input", { origin: this.identifier });
+    }),
+    (j.prototype.destroy = function () {
+      this.$document.off("." + this.identifier),
+        this.$window.off("." + this.identifier),
+        this.$element
+          .off("." + this.identifier)
+          .removeAttr("style")
+          .removeData("plugin_" + k),
+        this.$range &&
+          this.$range.length &&
+          this.$range[0].parentNode.removeChild(this.$range[0]);
+    }),
+    (a.fn[k] = function (b) {
+      var c = Array.prototype.slice.call(arguments, 1);
+      return this.each(function () {
+        var d = a(this),
+          e = d.data("plugin_" + k);
+        e || d.data("plugin_" + k, (e = new j(this, b))),
+          "string" == typeof b && e[b].apply(e, c);
+      });
+    }),
+    "rangeslider.js is available in jQuery context e.g $(selector).rangeslider(options);"
+  );
+});
+
+new RangeInput(document.querySelector(".range"));

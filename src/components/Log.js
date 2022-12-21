@@ -3,24 +3,22 @@ import styled, { css } from "styled-components";
 import image from "../images/log-image.png";
 import arrow from "../images/arrow.svg";
 import { useEffect } from 'react';
+import Typography from "@mui/material";
+import Slider from "@mui/material";
 
 
 function Log() {
-    // var rating = document.getElementById("rating");
-    // var RatingValue = rating.value;
-    // paralax code, maybe??
-    // useEffect(() => {
-    //     var image = document.querySelectorAll(".arrow-2-AB8MDr");
-    //     new window.simpleParallax(image, { orientation: "up", scale: 1.2, overflow: true, delay: 0.4, transition: "none" });
-    //     var image = document.querySelectorAll(".rectangle-4-AB8MDr");
-    //     new window.simpleParallax(image, {
-    //         orientation: "down",
-    //         scale: 1.2,
-    //         overflow: true,
-    //         delay: 0.4,
-    //         transition: "none",
-    //     });
-    // }, []);
+    // const rangeX = document.getElementById("ratingID");
+    // console.log(rangeX.value)
+
+    function getRangeX(e) {
+        // console.log(e.target.value)
+        console.log(e.target.getBoundingClientRect().x);
+        // the thumb
+        // const thumb = e.target.pseudo("::-moz-range-thumb");
+        // console.log(thumb)
+        // console.log(rangeX.getBoundingClientRect())
+    }
     return (
         <Container>
             <LogContainer>
@@ -45,11 +43,27 @@ function Log() {
                     <InputName>
                         Rating (Elo)
                     </InputName>
-                    <EloRange type="range" id="rating" name="rating" min="150" max="3000" />
+                    <EloRange onChange={getRangeX} step="200" type="range" id="rating" name="rating" min="300" max="3000" />
                     {/* output of the input */}
-                    <RangeOutput>
+                    <RangeOutput className='range-output'>
                         value
                     </RangeOutput>
+                    {/* from mui */}
+                    <Typography id="non-linear-slider" gutterBottom>
+                        Storage: {valueLabelFormat(calculateValue(value))}
+                    </Typography>
+                    <Slider
+                        value={value}
+                        min={5}
+                        step={1}
+                        max={30}
+                        scale={calculateValue}
+                        getAriaValueText={valueLabelFormat}
+                        valueLabelFormat={valueLabelFormat}
+                        onChange={handleChange}
+                        valueLabelDisplay="auto"
+                        aria-labelledby="non-linear-slider"
+                    />
                     {/* agremmen to sharing the enfo */}
                     <Btn>
                         play

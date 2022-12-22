@@ -3,14 +3,14 @@ import styled, { css } from "styled-components";
 import image from "../images/log-image.png";
 import arrow from "../images/arrow.svg";
 import { useEffect } from 'react';
-import Typography from "@mui/material";
-import Slider from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
+import RangeSlider from './RangeSlider';
 
 
 function Log() {
     // const rangeX = document.getElementById("ratingID");
     // console.log(rangeX.value)
-
     function getRangeX(e) {
         // console.log(e.target.value)
         console.log(e.target.getBoundingClientRect().x);
@@ -18,7 +18,7 @@ function Log() {
         // const thumb = e.target.pseudo("::-moz-range-thumb");
         // console.log(thumb)
         // console.log(rangeX.getBoundingClientRect())
-    }
+    };
     return (
         <Container>
             <LogContainer>
@@ -42,28 +42,14 @@ function Log() {
                     </InputConatiner>
                     <InputName>
                         Rating (Elo)
+                        <RangeSlider />
                     </InputName>
                     <EloRange onChange={getRangeX} step="200" type="range" id="rating" name="rating" min="300" max="3000" />
                     {/* output of the input */}
                     <RangeOutput className='range-output'>
                         value
                     </RangeOutput>
-                    {/* from mui */}
-                    <Typography id="non-linear-slider" gutterBottom>
-                        Storage: {valueLabelFormat(calculateValue(value))}
-                    </Typography>
-                    <Slider
-                        value={value}
-                        min={5}
-                        step={1}
-                        max={30}
-                        scale={calculateValue}
-                        getAriaValueText={valueLabelFormat}
-                        valueLabelFormat={valueLabelFormat}
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="non-linear-slider"
-                    />
+
                     {/* agremmen to sharing the enfo */}
                     <Btn>
                         play
@@ -77,10 +63,9 @@ function Log() {
 
             </LogContainer>
         </Container>
-    )
-}
-
-export default Log
+    );
+};
+export default Log;
 
 
 const Container = styled.div`

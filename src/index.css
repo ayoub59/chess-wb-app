@@ -11,6 +11,27 @@ body {
   font-family: BrandingAliskaje;
   src: url(./fonts/BrandingAliskaje.otf);
 }
+
+.MuiSlider-thumb {
+  color: green;
+}
+.MuiSlider-thumb:hover {
+  /* background-color: #333; */
+}
+.css-eg0mwd-MuiSlider-thumb:hover {
+  background-color: var(--chicago) !important;
+}
+.css-eg0mwd-MuiSlider-thumb:hover,
+.css-eg0mwd-MuiSlider-thumb.Mui-focusVisible {
+  background-color: var(--chicago) !important;
+}
+.MuiSlider-rail {
+  color: lightgreen;
+}
+.MuiSlider-track {
+  color: green;
+}
+
 /* for the range animation || i still don't know nor understand it all */
 .range {
   position: relative;

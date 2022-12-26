@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from "styled-components";
 import image from "../images/log-image.png";
 import arrow from "../images/arrow.svg";
-import { useEffect } from 'react';
-import Typography from "@mui/material/Typography";
-import Slider from "@mui/material/Slider";
 import RangeSlider from './RangeSlider';
 
 
 function Log() {
-    // const rangeX = document.getElementById("ratingID");
-    // console.log(rangeX.value)
-    function getRangeX(e) {
-        // console.log(e.target.value)
-        console.log(e.target.getBoundingClientRect().x);
-        // the thumb
-        // const thumb = e.target.pseudo("::-moz-range-thumb");
-        // console.log(thumb)
-        // console.log(rangeX.getBoundingClientRect())
-    };
+    // stats
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+
+    // handlers
+    function handleName(e) {
+        setName(e.target.value);
+    }
+    function handleEmail(e) {
+        setEmail(e.target.value);
+    }
+
+
+    // };
     return (
         <Container>
             <LogContainer>
@@ -30,27 +31,19 @@ function Log() {
                             Full name
                         </InputName>
 
-                        <InputField />
+                        <InputField onChange={handleName} />
                     </InputConatiner>
                     {/* Email */}
                     <InputConatiner>
                         <InputName>
                             Email
                         </InputName>
-                        <InputField />
+                        <InputField onChange={handleEmail} />
 
                     </InputConatiner>
                     <InputName>
-                        Rating (Elo)
                         <RangeSlider />
                     </InputName>
-                    <EloRange onChange={getRangeX} step="200" type="range" id="rating" name="rating" min="300" max="3000" />
-                    {/* output of the input */}
-                    <RangeOutput className='range-output'>
-                        value
-                    </RangeOutput>
-
-                    {/* agremmen to sharing the enfo */}
                     <Btn>
                         play
                         <Aroow src={arrow} />
@@ -72,17 +65,15 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 30px;
 `
 
 const LogContainer = styled.div`
-/* background-color: #181818; */
 height: 500px;
-/* inject */
 color: white;
 height:700px ;
 display: flex;
 width: 80%;
-
 `
 
 const TextConatiner = styled.div`
@@ -122,7 +113,6 @@ const Title = styled.div`
 `
 const ImageConatiner = styled.div`
 width:50% ;
-/* background-color:gray ; */
 `
 const Image = styled.img`
 object-fit: fill;
@@ -152,14 +142,4 @@ width: fit-content;
 const Aroow = styled.img`
 width: 30px;
 object-fit: fill;
-`
-const EloRange = styled.input`
-width: 80% !important;
-
-`
-const RangeOutput = styled.h3`
-  color: var(--concrete);
-  font-family: "BrandingAliskaje";
-  font-size: var(--SubheadingSizeDisktop);
-  font-weight: 400;
 `

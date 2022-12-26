@@ -1,26 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import styled, { css } from "styled-components";
-
+import styled from "styled-components";
+import Checkbox from '@mui/material/Checkbox';
+import { orange } from '@mui/material/colors';
 
 function RangeSlider() {
-
-    // from mui
-    function valueLabelFormat(value) {
-        const units = ['KB', 'MB', 'GB', 'TB'];
-
-        let unitIndex = 0;
-        let scaledValue = value;
-
-        while (scaledValue >= 1024 && unitIndex < units.length - 1) {
-            unitIndex += 1;
-            scaledValue /= 1024;
-        };
-
-        return `${scaledValue} ${units[unitIndex]}`;
-    };
-
     function calculateValue(value) {
         return 2 ** value;
     };
@@ -33,29 +18,40 @@ function RangeSlider() {
     };
 
 
-
+    // set state
+    const [Elo, setElo] = useState();
+    function handleElo(e) {
+        setElo(e.target.value);
+    }
     return (
-        <div>
-            {/* from mui */}
+        <Conatiner>
             <Typography id="non-linear-slider" gutterBottom>
-                Storage:
-                {valueLabelFormat(calculateValue(value))}
+                {/* Storage: {value} */}
+                <InputName>
+                    Rating (Elo) : {value}
+                    {/* <RangeSlider /> */}
+                </InputName>
             </Typography>
             <Slider
                 value={value}
-                min={5}
+                min={300}
                 step={1}
-                max={30}
+                max={2000}
                 scale={calculateValue}
-                getAriaValueText={valueLabelFormat}
-                valueLabelFormat={valueLabelFormat}
+                valueLabelFormat={value}
                 onChange={handleChange}
+                onChange={handleElo}
                 valueLabelDisplay="auto"
-                aria-labelledby="non-linear-slider"
-                shadows={0}
-            // elevation={0}
-            /></div>
+                aria-labelledby="custom-thumb-label"
+            />
+        </Conatiner>
     )
 }
-
-export default RangeSlider
+export default RangeSlider;
+const Conatiner = styled.div``
+const InputName = styled.h2`
+  color: var(--concrete);
+  font-family: "BrandingAliskaje";
+  font-size: var(--SubheadingSizeDisktop);
+  font-weight: 400;
+`

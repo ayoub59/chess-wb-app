@@ -5,18 +5,47 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg);
 }
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --bg: rgba(19, 19, 19, 1);
+  --licorice: rgba(20, 20, 20, 1);
+  --chicago: rgba(94, 94, 94, 1);
+  --alto: rgba(217, 217, 217, 0.38);
+  --alto-2: rgba(217, 217, 217, 1);
+  --concrete: rgba(242, 242, 242, 1);
+  --white: rgba(255, 255, 255, 1);
+  /* mine */
+  --linkSizeDispktop: 1.5vw;
+  --linkSizemobile: 3vw;
+  --headingSizeDisktop: 8vw;
+  --SubheadingSizeDisktop: 2vw;
+  --GameInfoDisktop: 3.4vw;
+
+  --font-size-m: 4.2px;
+  --font-size-l: 4.7px;
+  --font-size-xxl: 20px;
+  --font-size-xxxl: 13.5px;
+  --font-size-xxxl: 32px;
+  --font-size-xxxxl: 19.4px;
+  --font-size-xxxxl: 45.8px;
+  --font-size-xxxxxl: 27.1px;
+  --font-size-xxxxxl: 91.6px;
+  --font-size-xl2: 6.8px;
+  --font-size-xxl2: 9.7px;
+
+  --font-family-abel: "Abel";
+  --font-family-abel-regular: "Abel-Regular";
+  --font-family-alata: "Alata";
+  --font-family-branding_aliskaje-regular: "Branding Aliskaje-Regular";
+}
 
 /* Variables */
 @font-face {
   font-family: BrandingAliskaje;
   src: url(./fonts/BrandingAliskaje.otf);
 }
-/* from stack
-& .MuiSlider-thumb:hover {
-  color: red;
-  box-shadow: 0 0 0 10px rgba(0, 255, 0, 0.3) !important;
-} */
 /* some bs from mui for the lable styling */
+/* it worked wow */
 .MuiSlider-markLabel,
 .MuiSlider-markLabelActive {
   background-color: #fff !important;
@@ -44,7 +73,6 @@ body {
   color: green;
 }
 .MuiSlider-thumb:hover {
-  /* background-color: #333; */
 }
 .css-eg0mwd-MuiSlider-thumb:hover {
   background-color: var(--chicago) !important;
@@ -60,174 +88,6 @@ body {
   color: var(--concrete);
 }
 
-/* for the range animation || i still don't know nor understand it all */
-.range {
-  position: relative;
-}
-.range input[type="range"] {
-  appearance: none;
-  padding: 0;
-  width: 100%;
-  height: 22px;
-  cursor: pointer;
-  display: block;
-}
-.range input[type="range"]:focus {
-  outline: none;
-}
-.range input[type="range"][disabled] {
-  opacity: 0.3;
-  cursor: default;
-}
-.range .rangeslider {
-  position: relative;
-  height: 22px;
-  cursor: pointer;
-  user-select: none;
-}
-.range .rangeslider:before {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  background: #e6e6e6;
-  border-radius: 100px;
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.range input::-webkit-slider-runnable-track {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  background: #e6e6e6;
-  border-radius: 100px;
-  margin: 11px 0;
-}
-.range input::-moz-range-track {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  background: #e6e6e6;
-  border-radius: 100px;
-  margin: 11px 0;
-}
-.range input::-ms-track {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  background: #e6e6e6;
-  border-radius: 100px;
-  color: transparent;
-  padding: 11px 0;
-  background: transparent;
-  border-color: transparent;
-}
-.range input::-ms-fill-lower,
-.range input::-ms-fill-upper {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  background: #e6e6e6;
-  border-radius: 100px;
-}
-.range input::-ms-fill-lower {
-  background: #60cd18;
-}
-.range .rangeslider-fill-lower {
-  background-color: #60cd18;
-  border-radius: 100px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 4px;
-  will-change: width;
-}
-
-.range input::-webkit-slider-thumb {
-  box-sizing: border-box;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
-  border: 6px solid #fff;
-  height: 24px;
-  width: 24px;
-  border-radius: 100px;
-  background: #333940;
-  cursor: pointer;
-  appearance: none;
-  transform: translateY(-50%);
-  margin-top: 2px;
-}
-.range input::-moz-range-thumb {
-  box-sizing: border-box;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
-  border: 6px solid #fff;
-  height: 24px;
-  width: 24px;
-  border-radius: 100px;
-  background: #333940;
-  cursor: pointer;
-}
-.range input::-ms-thumb {
-  box-sizing: border-box;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
-  border: 6px solid #fff;
-  height: 24px;
-  width: 24px;
-  border-radius: 100px;
-  background: #333940;
-  cursor: pointer;
-}
-.range .rangeslider-thumb {
-  box-sizing: border-box;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
-  border: 6px solid #fff;
-  height: 24px;
-  width: 24px;
-  border-radius: 100px;
-  background: #333940;
-  cursor: pointer;
-  position: absolute;
-  touch-action: pan-x;
-  top: 50%;
-  transform: translateY(-50%);
-  will-change: left;
-}
-.range .range-output {
-  position: absolute;
-  left: 6px;
-  top: 6px;
-  transform-origin: 0 0;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  user-select: none;
-}
-.range .range-output .output {
-  display: block;
-  position: absolute;
-  height: 60px;
-  line-height: 60px;
-  min-width: 32px;
-  padding: 0 20px;
-  top: -2px;
-  transform: translate(-50%, -100%);
-  background: #383c42;
-  color: #fff;
-  border-radius: 100px;
-  white-space: nowrap;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-align: center;
-}
-.range .range-output .output:before {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  border: 10px solid #383c42;
-  border-bottom: none;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  transform: translateX(-50%);
-}
 body {
   font-family: Helvetica Neue, Helvetica, Arial;
   font-weight: 300;
@@ -249,274 +109,7 @@ h2 {
   margin-bottom: 30px;
 }
 
-/* for the range input */
-input[type="range"] {
-  height: 31px;
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 100%;
-  background-color: transparent !important;
-}
-input[type="range"]:focus {
-  outline: none;
-}
-input[type="range"]::-webkit-slider-runnable-track {
-  /* width: 100%; */
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: #5e5e5e;
-  border-radius: 10px;
-}
-input[type="range"]::-webkit-slider-thumb {
-  border: 2px solid var(--concrete);
-  height: 30px;
-  width: 30px;
-  border-radius: 14px;
-  background: var(--bg);
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -13px;
-}
-input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #5e5e5e;
-}
-input[type="range"]::-moz-range-track {
-  /* width: 100%; */
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: var(--bg);
-  border-radius: 10px;
-}
-input[type="range"]::-moz-range-thumb {
-  border: 1px solid #ffffff;
-  height: 24px;
-  width: 24px;
-  border-radius: 14px;
-  background: var(--bg);
-  cursor: pointer;
-}
-input[type="range"]::-ms-track {
-  /* width: 100%; */
-  height: 5px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-
-input[type="range"]::-ms-thumb {
-  margin-top: 1px;
-  border: 1px solid #ffffff;
-  height: 24px;
-  width: 24px;
-  border-radius: 14px;
-  background: var(--bg);
-  cursor: pointer;
-}
-input[type="range"]:focus::-ms-fill-lower {
-  background: var(--bg);
-}
-input[type="range"]:focus::-ms-fill-upper {
-  background: var(--bg);
-}
-
-:root {
-  --black: rgba(0, 0, 0, 1);
-  --bg: rgba(19, 19, 19, 1);
-  --licorice: rgba(20, 20, 20, 1);
-  --chicago: rgba(94, 94, 94, 1);
-  --alto: rgba(217, 217, 217, 0.38);
-  --alto-2: rgba(217, 217, 217, 1);
-  --concrete: rgba(242, 242, 242, 1);
-  --white: rgba(255, 255, 255, 1);
-  /* mine */
-  --linkSizeDispktop: 1.5vw;
-  --linkSizemobile: 3vw;
-  --headingSizeDisktop: 8vw;
-  --SubheadingSizeDisktop: 2vw;
-
-  --font-size-m: 4.2px;
-  --font-size-l: 4.7px;
-  --font-size-xxl: 20px;
-  --font-size-xxxl: 13.5px;
-  --font-size-xxxl: 32px;
-  --font-size-xxxxl: 19.4px;
-  --font-size-xxxxl: 45.8px;
-  --font-size-xxxxxl: 27.1px;
-  --font-size-xxxxxl: 91.6px;
-  --font-size-xl2: 6.8px;
-  --font-size-xxl2: 9.7px;
-
-  --font-family-abel: "Abel";
-  --font-family-abel-regular: "Abel-Regular";
-  --font-family-alata: "Alata";
-  --font-family-branding_aliskaje-regular: "Branding Aliskaje-Regular";
-}
-
 /* Classes */
 .center {
   text-align: center;
-}
-.alata-normal-white-19-4px {
-  color: var(--white);
-  font-family: var(--font-family-alata);
-  font-size: 19.391307830810547px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-27-1px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 27.089946746826172px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-4-7px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 4.740740776062012px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-27-1px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-4-2px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-m);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-9-7px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxl2);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-40px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 40px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-20px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.alata-normal-white-91-6px {
-  color: var(--white);
-  font-family: var(--font-family-alata);
-  font-size: var(--font-size-xxxxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-4-7px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-l);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-22-4px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 22.399999618530273px;
-  font-weight: 400;
-  font-style: normal;
-}
-.alata-normal-white-19-4px {
-  color: var(--white);
-  font-family: var(--font-family-alata);
-  font-size: var(--font-size-xxxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-4-2px-2 {
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-m);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-45-8px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-concrete-5-1px {
-  color: var(--concrete);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 5.079364776611328px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-13-5px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 13.544973373413086px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-6-8px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xl2);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-128px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 128px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-13-5px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-32px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxl);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-concrete-24px {
-  color: var(--concrete);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 24px;
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-alto-4-2px {
-  color: var(--alto-2);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-m);
-  font-weight: 400;
-  font-style: normal;
-}
-.brandingaliskaje-regular-normal-white-8-5px {
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: 8.465608596801758px;
-  font-weight: 400;
-  font-style: normal;
 }

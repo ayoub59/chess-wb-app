@@ -2,33 +2,33 @@ import React from 'react'
 import styled, { css } from "styled-components";
 
 function Arcive() {
-    function GameData() {
-        return (
-            <Gameinfo>
-                <Rank># 1</Rank>
-                <Players>
-                    <Color>ayoub</Color>
-                    <Color>vs</Color>
-                    <Color>abdo</Color>
-                </Players>
-                <Color>date</Color>
-                <Color>game</Color>
-            </Gameinfo>
-        )
-    }
+  function GameData() {
     return (
-        <Conatiner>
-            <ArContainer>
-                <Title>Log in</Title>
-                <ArItem>
-                    <GameData />
-                    <GameData />
-                    <GameData />
-                    <GameData />
-                </ArItem>
-            </ArContainer>
-        </Conatiner>
+      <Gameinfo>
+        <Rank># 1</Rank>
+        <Players>
+          <Color>ayoub</Color>
+          <Color>vs</Color>
+          <Color>abdo</Color>
+        </Players>
+        <Color>date</Color>
+        <Color>game</Color>
+      </Gameinfo>
     )
+  }
+  return (
+    <Conatiner>
+      <ArContainer>
+        <Title>last games</Title>
+        <ArItem>
+          <GameData />
+          <GameData />
+          <GameData />
+          <GameData />
+        </ArItem>
+      </ArContainer>
+    </Conatiner>
+  )
 }
 
 export default Arcive
@@ -51,13 +51,6 @@ width:80%;
 
 // new
 
-export const BrandingaliskajeRegularNormalWhite4 = css`
-  color: var(--white);
-  font-family: var(--font-family-branding_aliskaje-regular);
-  font-size: var(--font-size-xxxxl);
-  font-weight: 400;
-  font-style: normal;
-`;
 
 export const AlataNormalWhite916px = css`
   color: var(--white);
@@ -76,14 +69,19 @@ const ArItem = styled.div`
 `;
 
 const Rank = styled.h1`
-  ${AlataNormalWhite916px}
+
+color: var(--white);
+  font-family: var(--font-family-alata);
+  font-size: 3vw;
+  font-weight: 400;
+  font-style: normal;
+  /*  */
   width: fit-content;
   letter-spacing: 0;
   white-space: nowrap;
 `;
 
 const Gameinfo = styled.div`
-  ${BrandingaliskajeRegularNormalWhite4}
   display: flex;
   width: fit-content;
   align-items: flex-start;

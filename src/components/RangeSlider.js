@@ -11,35 +11,45 @@ function RangeSlider() {
     };
     const [value, setValue] = React.useState(10);
 
-    const handleChange = (event, newValue) => {
-        if (typeof newValue === 'number') {
-            setValue(newValue);
-        }
-    };
-
 
     // set state
-    const [Elo, setElo] = useState();
-    function handleElo(e) {
-        setElo(e.target.value);
+    // const [Elo, setElo] = useState();
+    // function handleElo(e) {
+    //     // handle change
+
+    //     // const handleChange = (event, newValue) => {
+
+    //     // };
+    //     // if (typeof newValue === 'number') {
+    //     //     setValue(newValue);
+    //     // }
+    //     setElo(e.target.value);
+    //     console.log(Elo);
+    // }
+
+    // set state
+    const [Elo, setElo] = useState(300);
+    function handleElo(event, newValue) {
+        setElo(newValue);
+        console.log(Elo);
     }
     return (
         <Conatiner>
             <Typography id="non-linear-slider" gutterBottom>
                 {/* Storage: {value} */}
                 <InputName>
-                    Rating (Elo) : {value}
+                    Rating (Elo) : {Elo}
                     {/* <RangeSlider /> */}
                 </InputName>
             </Typography>
             <Slider
-                value={value}
+                value={Elo}
                 min={300}
-                step={1}
+                step={100}
                 max={2000}
-                scale={calculateValue}
-                valueLabelFormat={value}
-                onChange={handleChange}
+                // scale={calculateValue}
+                valueLabelFormat={Elo}
+                // onChange={handleChange}
                 onChange={handleElo}
                 valueLabelDisplay="auto"
                 aria-labelledby="custom-thumb-label"

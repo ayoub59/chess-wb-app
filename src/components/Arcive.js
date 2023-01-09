@@ -44,14 +44,14 @@ const Title = styled.div`
 const Conatiner = styled.div`
 display: flex;
 justify-content: center;
+padding: 100px 0px;
+@media (max-width: 760px){
+    gap: 25px;
+  }
 `
 const ArContainer = styled.div`
 width:80%;
 `
-
-// new
-
-
 export const AlataNormalWhite916px = css`
   color: var(--white);
   font-family: var(--font-family-alata);
@@ -87,6 +87,9 @@ const Gameinfo = styled.div`
   align-items: flex-start;
   gap: 85px;
   align-items: center;
+  @media (max-width: 760px){
+    gap: 30px;
+  }
 `;
 
 const Players = styled.div`
@@ -94,6 +97,9 @@ const Players = styled.div`
   width: fit-content;
   align-items: flex-start;
   gap: 42px;
+  @media (max-width: 760px){
+    gap: 20px;
+  }
 `;
 
 const Color = styled.div`

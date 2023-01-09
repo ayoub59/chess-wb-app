@@ -66,6 +66,7 @@ const Container = styled.div`
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
+    padding: 100px 0px;
 `
 
 const LogContainer = styled.div`
@@ -89,10 +90,13 @@ const InputName = styled.h2`
   font-family: "BrandingAliskaje";
   font-size: var(--SubheadingSizeDisktop);
   font-weight: 400;
+  @media (max-width: 768px){
+  font-size: var(--SubheadingSizemobile);
+  }
 `
 const InputField = styled.input`
 background: rgba(217, 217, 217, 0.38);
-border: 2.65595px solid #FFFFFF;
+border: 3px solid #FFFFFF;
 border-radius: 66.3987px;
 height: 30px;
 width: 60%;
@@ -117,6 +121,9 @@ width:50% ;
 const Image = styled.img`
 object-fit: fill;
 max-height: 100%;
+@media (max-width: 768px){
+    width: 43vw;
+}
 `
 const Btn = styled.button`
   cursor: pointer;

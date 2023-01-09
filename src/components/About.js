@@ -3,19 +3,19 @@ import styled, { css } from "styled-components";
 import image from "../images/creator-image.png"
 
 function About() {
-    return (
-        <AboutConatiner>
-            <TextContainer>
-                <Title>creator</Title>
-            </TextContainer>
-            <CreatorImage src={image} alt="creator" />
-            <TextContainer>
-                <AboutTheCreator>
-                    Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat, Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat,Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat
-                </AboutTheCreator>
-            </TextContainer>
-        </AboutConatiner>
-    )
+  return (
+    <AboutConatiner>
+      <TextContainer>
+        <Title>creator</Title>
+      </TextContainer>
+      <CreatorImage src={image} alt="creator" />
+      <TextContainer>
+        <AboutTheCreator>
+          Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat, Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat,Lorem ipsum dolor sit amet consectetur. Tincidunt blandit euismod ac at amet nisi adipiscing nunc. Consectetur ultricies facilisis luctus sit amet nulla non integer volutpat
+        </AboutTheCreator>
+      </TextContainer>
+    </AboutConatiner>
+  )
 }
 
 export default About
@@ -23,6 +23,7 @@ const AboutConatiner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 100px 0px;
 `;
 
 const Title = styled.h1`
@@ -44,9 +45,10 @@ width: 80%;
 `;
 
 const CreatorImage = styled.img`
-  width: 905px;
+  width: 77vw;
   object-fit: fill;
   margin-top: 25px;
+
 `;
 
 const AboutTheCreator = styled.p`
@@ -62,6 +64,9 @@ const AboutTheCreator = styled.p`
   text-align: left;
   line-height: 180%;
 width: 80%;
+@media (max-width: 768px){
+  font-size: var(--PSizemobile);
+}
 
 `;
 const TextContainer = styled.div`

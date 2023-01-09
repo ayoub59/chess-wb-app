@@ -4,6 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg);
+  overflow-x: hidden;
 }
 :root {
   --black: rgba(0, 0, 0, 1);
@@ -19,8 +20,10 @@ body {
   --linkSizemobile: 3vw;
   --headingSizeDisktop: 8vw;
   --SubheadingSizeDisktop: 2vw;
+  --SubheadingSizemobile: 4vw;
   --GameInfoDisktop: 3.4vw;
   --PSizeDisktop: 1.7vw;
+  --PSizemobile: 4vw;
 
   --font-size-m: 4.2px;
   --font-size-l: 4.7px;

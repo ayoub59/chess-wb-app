@@ -26,7 +26,6 @@ function Hero() {
                     </Btn>
                 </TextConatiner>
                 <ImageConatner>
-                    {/* <image src={image} /> */}
                     <Image src={image} />
                 </ImageConatner>
             </HeroContainer>
@@ -109,6 +108,10 @@ width:50% ;
 const Image = styled.img`
 object-fit: fill;
 max-height: 70%;
+@media (max-width: 768px){
+width: 43vw;
+}
+;
 `
 const Aroow = styled.img`
 width: 30px;

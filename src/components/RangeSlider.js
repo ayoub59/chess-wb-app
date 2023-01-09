@@ -10,24 +10,6 @@ function RangeSlider() {
         return 2 ** value;
     };
     const [value, setValue] = React.useState(10);
-
-
-    // set state
-    // const [Elo, setElo] = useState();
-    // function handleElo(e) {
-    //     // handle change
-
-    //     // const handleChange = (event, newValue) => {
-
-    //     // };
-    //     // if (typeof newValue === 'number') {
-    //     //     setValue(newValue);
-    //     // }
-    //     setElo(e.target.value);
-    //     console.log(Elo);
-    // }
-
-    // set state
     const [Elo, setElo] = useState(300);
     function handleElo(event, newValue) {
         setElo(newValue);
@@ -64,4 +46,7 @@ const InputName = styled.h2`
   font-family: "BrandingAliskaje";
   font-size: var(--SubheadingSizeDisktop);
   font-weight: 400;
+    @media (max-width: 768px){
+  font-size: var(--SubheadingSizemobile);
+  }
 `

@@ -72,6 +72,10 @@ const IconsConatiner = styled.div`
     display: flex;
     justify-content: flex-start;
     gap: 20px;
+    @media (max-width: 768px) {
+    justify-content: center;
+  }
+    
 `
 export const BrandingaliskajeRegularNormalWhite2 = css`
   color: var(--white);
@@ -86,6 +90,12 @@ const Fotter = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 60px;
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: center;
+  }
+  
 `;
 
 const AllRightAreReserv = styled.div`

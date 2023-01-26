@@ -4,7 +4,7 @@ import image from "../images/creator-image.png"
 
 function About() {
   return (
-    <AboutConatiner>
+    <AboutConatiner id='about'>
       <TextContainer>
         <Title>creator</Title>
       </TextContainer>

@@ -2,6 +2,8 @@ import React from 'react'
 import styled, { css } from "styled-components";
 import image from "../images/hero-image.png";
 import arrow from "../images/arrow.svg";
+import { Link } from "react-router-dom";
+
 
 function Hero() {
     return (
@@ -20,10 +22,15 @@ function Hero() {
                             Lorem ipsum dolor sit amet consectetur. Mauris cursus ut diam iaculis tincidunt massa quis quis dolor. Est quisque odio turpis facilisis tortor.
                         </P>
                     </Paragraph>
-                    <Btn>
-                        play
-                        <Aroow src={arrow} />
-                    </Btn>
+                    <Link to="/play">
+
+                        <Btn>
+                            play
+                            <Aroow src={arrow} />
+                        </Btn>
+
+                    </Link>
+
                 </TextConatiner>
                 <ImageConatner>
                     <Image src={image} />

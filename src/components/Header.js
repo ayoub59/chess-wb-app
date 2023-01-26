@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import logo from "../images/ChOn.svg";
 
@@ -7,10 +8,13 @@ function header() {
     <div>
       <NavContainer>
         <LogoContainer>
-          <Logo src={logo} alt="Column" />
+          <Link to="/">
+            <Logo src={logo} alt="Column" />
+
+          </Link>
         </LogoContainer>
         <Links>
-          <Title href="#">about</Title>
+          <Title href="#about">about</Title>
 
           <Title href="#">archive</Title>
         </Links>

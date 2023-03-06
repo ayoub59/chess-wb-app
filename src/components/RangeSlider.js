@@ -6,22 +6,19 @@ import Checkbox from '@mui/material/Checkbox';
 import { orange } from '@mui/material/colors';
 
 function RangeSlider() {
-    function calculateValue(value) {
-        return 2 ** value;
-    };
-    const [value, setValue] = React.useState(10);
+    // function calculateValue(value) {
+    //     return 2 ** value;
+    // };
+    // const [value, setValue] = React.useState(10);
     const [Elo, setElo] = useState(300);
     function handleElo(event, newValue) {
         setElo(newValue);
-        console.log(Elo);
     }
     return (
         <Conatiner>
             <Typography id="non-linear-slider" gutterBottom>
-                {/* Storage: {value} */}
                 <InputName>
                     Rating (Elo) : {Elo}
-                    {/* <RangeSlider /> */}
                 </InputName>
             </Typography>
             <Slider

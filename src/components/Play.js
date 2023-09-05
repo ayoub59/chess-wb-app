@@ -3,42 +3,10 @@ import BoardConatiner from './BoardConatiner'
 import styled, { css } from "styled-components";
 import { useState, useEffect, useRef } from 'react';
 import { Chess } from 'chess.js';
-// import { Chessboard } from "react-chessboard"
 import Chessboard from 'chessboardjsx';
 
 
 function Play() {
-
-    //  code from chat gpt
-    //     import React, { useState } from 'react';
-    // import Chess from 'chess.js';
-    // import Chessboard from 'chessboardjsx';
-
-    // function App() {
-    //   const [fen, setFen] = useState('start');
-    //   const [chess, setChess] = useState(new Chess());
-
-    //   function handleMove(from, to) {
-    //     const move = chess.move({ from, to });
-    //     if (move === null) {
-    //       throw new Error(`Invalid move: { "from": "${from}", "to": "${to}" }`);
-    //     }
-    //     setFen(chess.fen());
-    //     setChess(chess);
-    //   }
-
-    //   return (
-    //     <div>
-    //       <Chessboard
-    //         id="chessboard"
-    //         position={fen}
-    //         onDrop={(source, target) => handleMove(source, target)}
-    //       />
-    //     </div>
-    //   );
-    // }
-
-    // export default App;
 
     // code from myoutube
     const [fen, setFen] = useState("start");
@@ -47,7 +15,8 @@ function Play() {
 
     useEffect(() => {
         game.current = new Chess();
-        console.log(game)
+        console.log("game " + game)
+        console.log("fen " + fen)
 
 
     }, []);
@@ -58,23 +27,23 @@ function Play() {
         })
         console.log(move)
         if (move === null) return false;
-
-        // update the fen
         setFen(game.current.fen())
     }
 
 
-    // console.log(game.ascii())
     return (
         <PlayConatiner>
             <CodeEval>
-
+                <GameCodeHeading>
+                    game code :
+                </GameCodeHeading>
+                <GameCodeContainer>
+                    <GameCodeText>
+                        {fen}
+                    </GameCodeText>
+                </GameCodeContainer>
             </CodeEval>
-
             <Chessboard position={fen} onDrop={onDrop} />
-
-            {/* <BoardConatiner position={fen} onDrop={onDrop} /> */}
-
         </PlayConatiner>
     )
 }
@@ -85,50 +54,31 @@ display:flex ;
 justify-content: space-around;
 `
 const CodeEval = styled.div`
-background-color: #171717;
-width: 30%;
+width: 40%;
+height:40vw ;
 `
-
-
-/* code from meduim */
-/* 
-    const [game, setGame] = useState(new Chess());
-
-    // perform modify function on game state
-    function safeGameMutate(modify) {
-        setGame((g) => {
-            const update = { ...g };
-            modify(update);
-            return update;
-        });
-    }
-    // make computer move
-    function makeRandomMove() {
-        const possibleMoves = game.moves();
-        // exit if the game is over
-        if (game.game_over() || game.in_draw() || possibleMoves.length === 0) return;
-        // select random move
-        const randomIndex = Math.floor(Math.random() * possibleMoves.length);
-        // play random move
-        safeGameMutate((game) => {
-            game.move(possibleMoves[randomIndex]);
-        });
-    }
-    // perform action when piece dropped by user
-    function onDrop(sourceSquare, targetSquare) {
-        // attempt move
-        let move = null;
-        safeGameMutate((game) => {
-            move = game.move({
-                from: sourceSquare,
-                to: targetSquare,
-                promotion: 'q'
-            });
-        });
-
-        // illegal move made
-        if (move === null) return false;
-        // valid move made, make computer move
-        setTimeout(makeRandomMove, 200);
-        return true;
-    } */
+const GameCodeContainer = styled.div`
+border: 1px white solid;
+border-radius: 10%;
+background-color: #171717;
+height: 100%;
+`
+const GameCodeHeading = styled.h1`
+  color: var(--concrete);
+  font-family: "BrandingAliskaje";
+  font-size: 4.5vw;
+  font-weight: 400;
+  margin: 0;
+  text-align: left;
+  margin-bottom: 20px;
+  padding-left: 40px;
+`
+const GameCodeText = styled.p`
+font-size: var(--PSizeDisktop);
+color : var(--concrete);
+font-family: "BrandingAliskaje";
+padding-left: 40px;
+overflow-wrap: anywhere;
+    padding-right: 40px;
+    line-height: 250%;
+`
